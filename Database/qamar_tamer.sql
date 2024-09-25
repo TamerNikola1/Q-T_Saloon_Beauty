@@ -1,0 +1,195 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Aug 02, 2024 at 03:26 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `qamar_tamer`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appointments`
+--
+
+CREATE TABLE `appointments` (
+  `id` int(9) NOT NULL,
+  `user_id` int(9) DEFAULT NULL,
+  `appointment_time` datetime DEFAULT NULL,
+  `appointment_description` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `user_name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `appointments`
+--
+
+INSERT INTO `appointments` (`id`, `user_id`, `appointment_time`, `appointment_description`, `created_at`, `updated_at`, `user_name`) VALUES
+(11, 206954778, '2024-08-02 11:30:00', 'החלקה', '2024-07-29 08:43:32', '2024-07-29 08:43:32', 'rami tamer'),
+(12, 206954122, '2024-08-02 11:36:00', 'החלקה', '2024-07-29 08:44:19', '2024-07-29 08:44:19', 'mariana qamar'),
+(16, 206954788, '2024-08-03 15:55:00', 'החלקה', '2024-07-29 08:55:36', '2024-07-29 08:55:36', 'qamar qamar'),
+(17, 206954788, '2024-08-03 15:55:00', 'החלקה', '2024-07-29 09:05:17', '2024-07-29 09:05:17', 'qamar qamar');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `Feedback_ID` int(10) NOT NULL,
+  `Feedback_Text` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`Feedback_ID`, `Feedback_Text`) VALUES
+(1, 'מעולה'),
+(2, 'צוות מעלוה תודה רבה מאוד '),
+(3, 'מעולה'),
+(4, 'אחלה שירות אבל בבקשה רוצים מזגן חדש חם לנו'),
+(5, 'השירות לא טוב בכלל מבקש לטפל דחוף'),
+(6, 'אחלה צוות');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `services`
+--
+
+CREATE TABLE `services` (
+  `Services_Name` varchar(20) NOT NULL,
+  `Services_ID` int(10) NOT NULL,
+  `Price` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `services`
+--
+
+INSERT INTO `services` (`Services_Name`, `Services_ID`, `Price`) VALUES
+('איפור כלה', 1, 1100),
+('תסרוקת כלה', 2, 2500),
+('איפור מקצועי', 3, 350),
+('צביעת שיער', 4, 100),
+('תוספת לשיער', 5, 1200),
+('בניית ציפורניים', 7, 250),
+('החלקה', 9, 1000),
+('מילוי ציפורניים', 13, 130);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `ID` int(9) NOT NULL,
+  `Name` varchar(20) NOT NULL,
+  `Last_Name` varchar(20) NOT NULL,
+  `Phone` int(10) NOT NULL,
+  `Email` varchar(100) NOT NULL,
+  `Birthday` date NOT NULL,
+  `Address` varchar(40) NOT NULL,
+  `Password` varchar(64) NOT NULL,
+  `Role` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`ID`, `Name`, `Last_Name`, `Phone`, `Email`, `Birthday`, `Address`, `Password`, `Role`) VALUES
+(0, 'rami', 'cohen', 524024085, 'rami.cohen@gmail.com', '2007-01-17', 'haifa', '$2y$10$evOW7gIBUPa/aGWGMxujl.GbjzsKxvgqR6CLYpjZB75PCS5IempEO', ''),
+(0, 'Firas', 'Sayegh', 524024088, 'feras.feras@gmail.com', '2011-01-17', 'haifa', '$2y$10$Oz9KdLnGW2t7XDRgLRJfE.692KzOpDXawGgwpDMCZGEa0roeNHDhe', ''),
+(206954122, 'mariana', 'qamar', 524125234, 'qamar_marianna245@gmail.com', '2007-02-17', 'haifa', '$2y$10$kAFCZ4ftklHDGHxscnE8ZeTKeTD0NCybboUZIGdBHZBaMGtVNdg.q', 'user'),
+(206954778, 'rami', 'tamer', 524785697, 'rami.tamer@gmail.com', '1998-02-25', 'haifa', '$2y$10$kAFCZ4ftklHDGHxscnE8ZeTKeTD0NCybboUZIGdBHZBaMGtVNdg.q', 'user'),
+(206954784, 'טלאמארו', 'עואד', 524586987, 'lamar232@gmail.com', '2024-04-06', 'haifaaa', '$2y$10$kAFCZ4ftklHDGHxscnE8ZeTKeTD0NCybboUZIGdBHZBaMGtVNdg.q', 'admin'),
+(206954788, 'qamar', 'qamar', 521452365, 'qamar_2024_qamar@gmail.com', '2011-06-19', 'nazareth', '$2y$10$kAFCZ4ftklHDGHxscnE8ZeTKeTD0NCybboUZIGdBHZBaMGtVNdg.q', 'user'),
+(206954894, 'mariana', 'qamarmariana', 524024036, 'qamar_mariana24@gmail.com', '2011-01-17', 'haifa', '$2y$10$kAFCZ4ftklHDGHxscnE8ZeTKeTD0NCybboUZIGdBHZBaMGtVNdg.q', 'user'),
+(213784192, 'Tamer', 'nicola', 522365891, 'tamer_2024@gmail.com', '2000-07-20', 'haifaaa', '$2y$10$kAFCZ4ftklHDGHxscnE8ZeTKeTD0NCybboUZIGdBHZBaMGtVNdg.q', 'Employee');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `appointments`
+--
+ALTER TABLE `appointments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `employee_id` (`user_id`);
+
+--
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD UNIQUE KEY `Feedback_ID` (`Feedback_ID`);
+
+--
+-- Indexes for table `services`
+--
+ALTER TABLE `services`
+  ADD PRIMARY KEY (`Services_ID`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`ID`,`Phone`,`Email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `appointments`
+--
+ALTER TABLE `appointments`
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `Feedback_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `services`
+--
+ALTER TABLE `services`
+  MODIFY `Services_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `appointments`
+--
+ALTER TABLE `appointments`
+  ADD CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`ID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

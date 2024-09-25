@@ -1,0 +1,39 @@
+/* Navbar Dropdown */
+.navlist li {
+    position: relative;
+}
+
+.navlist ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    background-color: var(--color-primary);
+    box-shadow: var(--shadow);
+    padding: 0.5rem 0;
+    min-width: 10rem;
+}
+
+.navlist li:hover ul {
+    display: block;
+}
+
+.navlist ul li {
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 0;
+}
+
+.navlist ul li a {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.navlist ul li a:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+}
